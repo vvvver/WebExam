@@ -1,0 +1,14 @@
+{
+  "name": "webexam",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vidanova Veronika",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "eslint": "^9.17.0"
+  }
+}

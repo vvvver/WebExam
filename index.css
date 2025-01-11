@@ -1,0 +1,153 @@
+:root {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background-color:cadetblue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 5rem;
+}
+
+nav a {
+  font-size: 2rem;
+  color: white;
+  text-decoration: none;
+  margin-right: 2rem;
+}
+
+nav a:last-child {
+  margin-right: 0;
+}
+
+main {
+  padding: 2rem 10rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2rem;
+}
+
+.notif {
+  background-color: rgb(207, 236, 237);
+  padding: 1rem 30rem;
+  font-size: 1.5rem;
+  text-align: center;
+  align-self: center;
+}
+
+.about p {
+  font-size: 1.5rem;
+}
+
+#grid-block {
+  margin: 0;
+  padding: 0;
+}
+
+.row p{
+  font-size: 1.5rem;
+}
+
+.list-group {
+  font-size: 1.5rem;
+}
+
+.page-item a{
+  font-size: 1.5rem;
+}
+
+#opted-course {
+  display: none;
+  font-size: 1.5rem;
+}
+
+.course-search {
+  display: flex;
+  column-gap: 2rem;
+}
+
+.course-search input {
+  width: 65%;
+  height: 4rem;
+  font-size: 1.4rem;
+  padding: 1rem;
+  border: 2px solid rgb(191, 228, 223);
+}
+
+.course-search select {
+  width: 25%;
+  font-size: 1.5rem;
+  border: 2px solid rgb(191, 228, 223);
+}
+
+.search-but {
+  width: 10rem;
+  height: 3rem;
+  border: 2px solid rgb(105, 236, 223);
+  font-size: 1.5rem;
+  background-color: rgb(192, 227, 234);
+  border-radius: 0.5rem;
+}
+
+.search-but:hover {
+  background-color: rgb(168, 218, 243);
+}
+
+.make-order {
+  width: 20rem;
+  height: 3rem;
+  border: 2px solid rgb(154, 194, 239);
+  font-size: 1.5rem;
+  background-color: rgb(197, 220, 246);
+  border-radius: 0.5rem;
+}
+
+#make-order:hover {
+  background-color: rgb(113, 208, 255);
+}
+
+.tutor-search {
+  display: flex;
+  column-gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.tutor-search input {
+  width: 30%;
+  height: 4rem;
+  font-size: 1.4rem;
+  padding: 1rem;
+  border: 2px solid rgb(191, 228, 223);
+}
+
+.tutor-search select {
+  width: 40%;
+  font-size: 1.5rem;
+  border: 2px solid rgb(191, 228, 223);
+}
+
+.tutor-search button {
+  height: 4rem;
+}
+
+footer {
+  background-color: rgb(218, 253, 254);
+  height: 7rem;
+  padding: 2rem;
+  font-size: 1.5rem;
+  margin-top: auto;
+}
