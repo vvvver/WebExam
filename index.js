@@ -1,7 +1,9 @@
-import { getCourses } from "./js/api/indexApi.js";
+import { getCourses, getTutors } from "./js/api/indexApi.js";
 console.log(await getCourses());
 const courses = await getCourses();
-// const courses = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const tutors = await getTutors();
+console.log(tutors);
+// const courses = [1, 1, 3, 1, 5, 6, 7, 8, 9, 10];
 
 const changePage = (pageNum) => {
   let correctCourses = [];
@@ -11,7 +13,6 @@ const changePage = (pageNum) => {
       break;
     }
   }
-  console.log(correctCourses);
   const parent = document.getElementById('list-courses');
   parent.replaceChildren();
   for (let i = 0; i < correctCourses.length; i++) {
@@ -43,14 +44,68 @@ for (let i = 1; i <= Math.ceil(courses.length/3); i++) {
 
 for (const listEl of document.getElementById('list-courses').childNodes) {
   listEl.addEventListener('click', () => {
-    console.log(listEl.textContent);
     for (let course of courses) {
       if (course.name == listEl.textContent) {
         document.getElementById('opted-course').style.display = 'block';
-        listEl.style.color = 'green';
-        document.getElementById('course-info').innerHTML = 'Название: ' + course.name + '<br>Описание: ' + course.description +
+        const parent = document.getElementById('course-info');
+        const courseInfo = document.createElement('li');
+        courseInfo.classList.add('list-group-item');
+        courseInfo.innerHTML = 'Название: ' + course.name + '<br>Описание: ' + course.description +
         '<br> Уровень: ' + course.level + '<br> Преподаватель: ' + course.teacher;
+        parent.appendChild(courseInfo);
       }
     }
   })
 }
+
+const searchCourse = document.getElementById('search-course');
+searchCourse.addEventListener('click', () => {
+  let courseName = document.getElementById('course').value;
+  document.getElementById('course').value = '';
+  const searchLevel = document.getElementById('level').value;
+  document.getElementById('level').value = ''; 
+  const searchedCourse = document.getElementById('searched-course');
+  const searchedTutor = document.getElementById('searched-tutor');
+  const parentCourse = document.getElementById('search-course-info');
+  const parentTutor = document.getElementById('search-tutor-info');
+  parentCourse.replaceChildren();
+  parentTutor.replaceChildren();
+  for (const course of courses) {
+    if (courseName != "") {
+      if (course.name == courseName) {
+        const courseInfo = document.createElement('li');
+        courseInfo.classList.add('list-group-item');
+        searchedCourse.style.display = 'block';
+        courseInfo.innerHTML = 'Название: ' + course.name + '<br>Описание: ' + course.description +
+        '<br> Уровень: ' + course.level + '<br> Преподаватель: ' + course.teacher;
+        parentCourse.appendChild(courseInfo);
+      }
+      for (const tutor of tutors) {
+        if (course.level == tutor.language_level) {
+          const tutorInfo = document.createElement('li');
+          tutorInfo.classList.add('list-group-item');
+          searchedTutor.style.display = 'block';
+          tutorInfo.innerHTML = 'Имя: ' + tutor.name + ', Опыт работы: ' + tutor.work_experience;
+          parentTutor.appendChild(tutorInfo);
+        }
+      }
+    } else {
+      if (course.level == searchLevel) {
+        const courseInfo = document.createElement('li');
+        courseInfo.classList.add('list-group-item');
+        searchedCourse.style.display = 'block';
+        courseInfo.innerHTML = 'Название: ' + course.name;
+        parentCourse.appendChild(courseInfo);
+      }
+      for (const tutor of tutors) {
+        if (searchLevel == tutor.language_level) {
+          const tutorInfo = document.createElement('li');
+          tutorInfo.classList.add('list-group-item');
+          searchedTutor.style.display = 'block';
+          tutorInfo.innerHTML = 'Имя: ' + tutor.name + ', Опыт работы: ' + tutor.work_experience;
+          parentTutor.appendChild(tutorInfo);
+        }
+      } 
+    }
+  }
+})

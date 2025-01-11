@@ -12,3 +12,14 @@ export const getCourses = async () => {
   }
 }
 
+export const getTutors = async () => {
+  try {
+    const response = await fetch(`${address}api/tutors?api_key=${api_key}`, {
+    });
+    const ans = await response.json();
+    return ans;
+  }
+  catch (e) {
+    console.log(e);
+  }
+}

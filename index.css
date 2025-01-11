@@ -38,7 +38,7 @@ main {
   padding: 2rem 10rem;
   display: flex;
   flex-direction: column;
-  row-gap: 2rem;
+  row-gap: 1.5rem;
 }
 
 .notif {
@@ -75,6 +75,10 @@ main {
   font-size: 1.5rem;
 }
 
+#opted-course button, #searched-tutor button{
+  margin-top: 1rem;
+}
+
 .course-search {
   display: flex;
   column-gap: 2rem;
@@ -86,6 +90,11 @@ main {
   font-size: 1.4rem;
   padding: 1rem;
   border: 2px solid rgb(191, 228, 223);
+}
+
+.course-search p {
+  font-size: 2rem;
+  margin: 0;
 }
 
 .course-search select {
@@ -101,6 +110,10 @@ main {
   font-size: 1.5rem;
   background-color: rgb(192, 227, 234);
   border-radius: 0.5rem;
+}
+
+#searched-course, #searched-tutor {
+  display: none;
 }
 
 .search-but:hover {
