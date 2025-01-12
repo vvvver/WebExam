@@ -8,6 +8,50 @@
   <title>Vidanova</title>
 </head>
 <body>
+  <div class="modal-back">
+    <div class="modal-active">
+        <div class="modal-close">
+          <h3>Заявка на курс</h3>
+          <img class="x" src="./src/x.svg" />
+        </div>
+        <div class="course-form">
+          <div class="info-block">
+            <p>Название курса</p>
+            <p id="course-name"></p>
+          </div>
+          <div class="info-block">
+            <p>Преподаватель</p>
+            <p id="teacher-name"></p>
+          </div>
+          <div class="info-block">
+            <p>Дата начала занятий</p>
+            <select name="start-date" id="start-date" required></select>
+          </div>
+          <div class="info-block">
+            <p>Время начала занятий</p>
+            <select name="start-date" id="start-time" disabled required></select>
+          </div>
+          <div class="info-block">
+            <p>Продолжительность курса</p>
+            <p id="duration"></p>
+          </div>
+          <div class="info-block">
+            <p>Количество студентов в группе </p>
+            <input type="number" id="students-num" name="students-num" min="1" max="20" step="1" required>
+          </div>
+          <div class="info-block">
+            <p id="total-cost">Общая стоимость:  </p>
+          </div>
+          <div class="order-but">
+            <button id="calc-sum">Посчитать стоимость</button>
+            <button>Отправить</button>
+            <button>Отмена</button>
+          </div>
+        </div>
+        <!-- <div class="modalWindow"></div> -->
+    </div>
+  </div>
+
   <header>
     <div class="name-block">
       <h2>Learn Russian</h2>
@@ -73,7 +117,7 @@
     <div id="opted-course">
       <h3>Информация о курсе:</h3>
       <ul class="list-group" id="course-info"></ul>
-      <button class="make-order">Подать заявку</button>
+      <button class="make-order" id="make-order-but">Подать заявку</button>
     </div>
 
     <h1>Поиск курсов</h1>
