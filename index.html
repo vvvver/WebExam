@@ -36,16 +36,52 @@
             <p id="duration"></p>
           </div>
           <div class="info-block">
-            <p>Количество студентов в группе </p>
+            <p>Количество студентов в группе</p>
             <input type="number" id="students-num" name="students-num" min="1" max="20" step="1" required>
           </div>
+          <div class="info-block">
+            <p>Опции заказа:</p>
+          </div>
+          <div class="options">
+            <input type="checkbox" id="early-reg" name="early-reg" disabled>
+            <p>Ранняя регистрация (скидка 10%)</p>
+          </div>
+          <div class="options">
+            <input type="checkbox" id="group-enrollment" name="group-enrollment" disabled>
+            <p>Груповая запись (скидка 15%)</p>
+          </div>
+          <div class="options">
+            <input type="checkbox" id="intensive-course" name="intensive-course" disabled>
+            <p>Интенсивный курс (+20% к стоимости)</p>
+          </div>
+          <div class="options">
+            <input type="checkbox" id="supplementary" name="supplementary">
+            <p>Допольнительные учебные материалы (+2000р к стоимости)</p>
+          </div>
+          <div class="options">
+            <input type="checkbox" id="personalized" name="personalized">
+            <p>Индивидуальные занятия (+1500р за каждую неделю)</p>
+          </div>
+          <div class="options">
+            <input type="checkbox" id="excursions" name="excursions">
+            <p>Культурные экскурсии (+25% к стоимости)</p>
+          </div>
+          <div class="options">
+            <input type="checkbox" id="assessment" name="assessment">
+            <p>Оценка уровня владения языком (+300р к стоимости)</p>
+          </div>
+          <div class="options">
+            <input type="checkbox" id="interactive" name="interactive">
+            <p>Доступ к интерактивной онлайн платформе (увеличивает стоимость в 1,5 раза)</p>
+          </div>
+
           <div class="info-block">
             <p id="total-cost">Общая стоимость:  </p>
           </div>
           <div class="order-but">
             <button id="calc-sum">Посчитать стоимость</button>
-            <button>Отправить</button>
-            <button>Отмена</button>
+            <button id="send">Отправить</button>
+            <button id="cancel-but">Отмена</button>
           </div>
         </div>
         <!-- <div class="modalWindow"></div> -->
@@ -139,11 +175,11 @@
       <ul class="list-group" id="search-course-info"></ul>
     </div>
     
-    <div id="searched-tutor">
+    <!-- <div id="searched-tutor">
       <h3>Доступные репетиторы для этого уровня</h3>
       <ul class="list-group" id="search-tutor-info"></ul>
-      <!-- <button class="make-order">Оформить заявку</button> -->
-    </div>
+      <button class="make-order">Оформить заявку</button>
+    </div> -->
     
 
     <h1>Поиск репетитора</h1>
