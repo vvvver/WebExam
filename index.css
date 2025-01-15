@@ -239,11 +239,21 @@ footer {
 }
 
 .order-but button {
-  border: 1px solid black;
-  padding: 0.2rem 0.5rem;
+  border: none;
+  padding: 0.2rem 1.5rem;
   margin-right: 1rem  ;
 }
-/* 
-.modalWindow {
-  position: relative;
-} */
+
+.yes {
+  background-color: red;
+  color: white;
+}
+
+.cancel {
+  background-color: lightgrey;
+}
+
+.save {
+  color: white;
+  background-color:rgb(51, 174, 133);
+}

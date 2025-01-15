@@ -1,0 +1,38 @@
+table {
+  padding-right: 15rem;
+  text-align: center;
+  border: 1px solid gray;
+  border-collapse: collapse;
+  font-size: 1.5rem;
+}
+
+#table-header {
+  background-color: rgb(226, 255, 254);
+}
+
+#order-history th, #order-history td {
+  width: 100vh;
+  padding: 2rem 0;
+  padding-right: 1rem;
+  border: 1px solid grey;
+}
+
+.action-block button {
+  background-color: white;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+
+.action-img {
+  height: 2rem;
+  width: 3.6rem;
+}
+
+#pagination {
+  align-self: center;
+}
+
+.del {
+  padding: 1rem 0;
+}

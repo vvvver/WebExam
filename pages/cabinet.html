@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/styles/cabinet.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <title>Vidanova/cabinet</title>
+</head>
+<body>
+  <div class="modal-back">
+    <div class="modal-active">
+        <div class="modal-close">
+          <h3>Просмотр заявки</h3>
+          <img class="x" src="../src/x.svg" />
+        </div>
+        <div class="course-form">
+          <div class="info-block">
+            <p>Название курса</p>
+            <p id="course-name"></p>
+          </div>
+          <div class="info-block">
+            <p>Дата начала занятий</p>
+            <p id="start-date"></p>
+          </div>
+          <div class="info-block">
+            <p>Время начала занятий</p>
+            <p id="start-time"></p>
+          </div>
+          <div class="info-block">
+            <p>Продолжительность курса в часах</p>
+            <p id="duration"></p>
+          </div>
+          <div class="info-block">
+            <p>Количество студентов в группе</p>
+            <p id="students-num"></p>
+          </div>
+          <div class="info-block">
+            <p><b>Подключенные опции:</b></p>
+          </div>
+          <div id="options-block"></div>
+          <div class="info-block">
+            <p id="total-cost">Общая стоимость:  </p>
+          </div>
+          <div class="order-but">
+            <button id="cancel-but" class="cancel">Закрыть</button>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="modal-back">
+    <div class="modal-active">
+        <div class="modal-close">
+          <h3>Заявка на курс</h3>
+          <img class="x" src="../src/x.svg" />
+        </div>
+        <div class="course-form">
+          <div class="info-block">
+            <p>Название курса</p>
+            <p id="course-name-edit"></p>
+          </div>
+          <div class="info-block">
+            <p>Дата начала занятий</p>
+            <select name="start-date" id="start-date-edit" required></select>
+          </div>
+          <div class="info-block">
+            <p>Время начала занятий</p>
+            <select name="start-date" id="start-time-edit" required></select>
+          </div>
+          <div class="info-block">
+            <p>Продолжительность курса</p>
+            <p id="duration-edit"></p>
+          </div>
+          <div class="info-block">
+            <p>Количество студентов в группе</p>
+            <input type="number" id="students-num-edit" name="students-num" min="1" max="20" step="1" required>
+          </div>
+          <div class="info-block">
+            <p>Опции заказа:</p>
+          </div>
+          <div class="options">
+            <input type="checkbox" id="early-reg" name="early-reg" disabled>
+            <p>Ранняя регистрация (скидка 10%)</p>
+          </div>
+          <div class="options">
+            <input type="checkbox" id="group-enrollment" name="group-enrollment" disabled>
+            <p>Груповая запись (скидка 15%)</p>
+          </div>
+          <div class="options">
+            <input type="checkbox" id="intensive-course" name="intensive-course" disabled>
+            <p>Интенсивный курс (+20% к стоимости)</p>
+          </div>
+          <div class="options">
+            <input type="checkbox" id="supplementary" name="supplementary">
+            <p>Допольнительные учебные материалы (+2000р к стоимости)</p>
+          </div>
+          <div class="options">
+            <input type="checkbox" id="personalized" name="personalized">
+            <p>Индивидуальные занятия (+1500р за каждую неделю)</p>
+          </div>
+          <div class="options">
+            <input type="checkbox" id="excursions" name="excursions">
+            <p>Культурные экскурсии (+25% к стоимости)</p>
+          </div>
+          <div class="options">
+            <input type="checkbox" id="assessment" name="assessment">
+            <p>Оценка уровня владения языком (+300р к стоимости)</p>
+          </div>
+          <div class="options">
+            <input type="checkbox" id="interactive" name="interactive">
+            <p>Доступ к интерактивной онлайн платформе (увеличивает стоимость в 1,5 раза)</p>
+          </div>
+
+          <div class="info-block">
+            <p id="cost">Общая стоимость:  </p>
+          </div>
+          <div class="order-but">
+            <button id="calc-sum">Посчитать стоимость</button>
+            <button id="cancel-but-edit" class="cancel">Отмена</button>
+            <button id="send" class="save">Сохранить</button>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="modal-back">
+    <div class="modal-active">
+        <div class="modal-close">
+          <h3>Удаление заказа</h3>
+          <img class="x" src="../src/x.svg" />
+        </div>
+        <div class="del">
+          <p>Вы уверены, что хотите удалить заказ?</p>
+        </div>
+        <div class="order-but">
+          <button class="cancel" id="cancel">Отмена</button>
+          <button class="yes" id="yes-but">Да</button>
+        </div>
+    </div>
+  </div>
+  <header>
+    <div class="name-block">
+      <h2>Learn Russian</h2>
+    </div>
+    <nav>
+      <a href="/index.html">На главную</a>
+      <a href="">Ваш Личный кабинет</a>
+    </nav>
+  </header>
+  <main>
+    <div class="notif" id="notif">
+      Область для уведомлений
+    </div>
+    <h1>Добро пожаловать в ваш аккаунт!</h1>
+    <h3>Ваши заявки:</h3>
+    <table id="order-history">
+      <tr id="table-header">
+        <th><h4>№</h4></th>
+        <th><h4>Название курса</h4></th>
+        <th><h4>Дата заказа</h4></th>
+        <th><h4>Общая стоимость</h4></th>
+        <th><h4>Действия</h4></th>
+      </tr>
+    </table>
+    <nav aria-label="Page navigation example" id="pagination">
+      <ul class="pagination">
+        <div id="pages" style="display: flex;"></div>
+      </ul>
+    </nav>
+  </main>
+  <footer>
+    Наши контакты: info@learnrussian.com
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <script type="module" src="/js/cabinet/cabinet.js"></script>
+  <script type="module" src="/js/api/cabinetApi.js"></script>
+</body>
+</html>

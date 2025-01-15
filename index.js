@@ -1,9 +1,14 @@
 import { getCourses, getTutors, postOrder } from "./js/api/indexApi.js";
 console.log(await getCourses());
-const courses = await getCourses();
+export const courses = await getCourses();
 const tutors = await getTutors();
 console.log(tutors);
 // const courses = [1, 1, 3, 1, 5, 6, 7, 8, 9, 10];
+
+const notif = document.getElementById('notif');
+setTimeout(() => {
+  notif.style.display = 'none';
+}, 5000);
 
 const courseClick = (listEl) => {
   listEl.addEventListener('click', () => {
@@ -62,7 +67,7 @@ const courseClick = (listEl) => {
                   let finishDate = new Date(date);
 
                   finishDate.setDate(finishDate.getDate() + course.total_length * 7); 
-                  finishTime.setHours(finishTime.getHours() + 2); 
+                  finishTime.setHours(finishTime.getHours() + course.week_length); 
                   const optionTime = document.createElement('option');
                   optionTime.value = startDates.slice(11, 16);
                   optionTime.innerHTML = `c ${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}
@@ -254,7 +259,6 @@ document.getElementById('calc-sum').addEventListener('click', () => {
   } catch (e) {
     alert(e);
   }
-  
 })
 
 document.getElementById('send').addEventListener('click', async() => {
@@ -267,21 +271,26 @@ document.getElementById('send').addEventListener('click', async() => {
     duration: duration,
     persons: Number(studentNum.value),
     price: totalCostWithOption,
-    early_registration: earlyRegCheckBox.checked,
-    group_enrollment: groupEnrollCheckBox.checked,
-    intensive_course: intensiveCourseCheckBox.checked,
-    supplementary: supplementaryCheckBox.checked,
-    personalized: personalCheckBox.checked,
-    excursions: excursionsCheckBox.checked,
-    assessment: assessmentCheckBox.checked,
-    interactive: intensiveCourseCheckBox.checked,
+    cost: totalCostWithOption,
+    isEarlyRegistration: earlyRegCheckBox.checked,
+    isGroupEnrollment: groupEnrollCheckBox.checked,
+    isIntensiveCourse: intensiveCourseCheckBox.checked,
+    isSupplementary: supplementaryCheckBox.checked,
+    isPersonalized: personalCheckBox.checked,
+    isExcursions: excursionsCheckBox.checked,
+    isAssessment: assessmentCheckBox.checked,
+    isInteractive: interactiveCheckBox.checked,
   }
   try {
     checkOrder();
     const ans = await postOrder(data);
     console.log(ans);
     makeOrderModal.style.display = 'none';
-    setTimeout(() => {alert('Заказ успешно создан')}, 1);
+    notif.innerHTML = 'Заказ успешно создан';
+    notif.style.display = 'block';
+    setTimeout(() => {
+      notif.style.display = 'none';
+    }, 5000);
     courseDuration.innerHTML = '';
     startTime.disabled = true;
     studentNum.value = '';
