@@ -241,8 +241,8 @@ const modals = (seeBut, editBut, delBut) => {
       console.log(ans);
       
       orders = await getOrders();
+      // pages();
       changePage(Number(sessionStorage.getItem('pagenum')));
-      pages();
       notif.innerHTML = 'Заказ успешно удален';
       notif.style.display = 'block';
       setTimeout(() => {

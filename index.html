@@ -90,6 +90,7 @@
   <header>
     <div class="name-block">
       <h2>Learn Russian</h2>
+      <img src="./src/logo.png" alt="">
     </div>
     <nav>
       <a href="#list-courses">Курсы</a>
@@ -106,52 +107,48 @@
       <h1>О Нашей Школе</h1>
       <p>Наша задача - предоставить качественное обучение для всех желающих изучать русский язык! Мы предлагаем различные варианты курсов для всех уровней.</p>
     </div>
-    <h1>Преимущества изучения русского языка</h1>
+    <h1 class="h">Преимущества изучения русского языка</h1>
   
     <div class="container" id="grid-block">
       <div class="row">
         <div class="col-4">
-          <h2>Распространенный язык</h2>
-          <p>Русский язык широко используется по всему миру.</p>
+          <div class="coool">
+            <h2>Распространенный язык</h2>
+            <p>Русский язык широко используется по всему миру.</p>
+          </div>
         </div>
         <div class="col-4">
-          <h2>Богатая культура</h2>
-          <p>Изучение языка помогает понимать русскую литературу и искусство более осмысленно.</p>
+          <div class="coool">
+            <h2>Богатая культура</h2>
+            <p>Изучение языка помогает понимать русскую литературу и искусство более осмысленно.</p>
+          </div>
         </div>
         <div class="col-4">
-          <h2>Возможности дальнейшей карьеры</h2>
-          <p>Откройте новые карьерные возможности.</p>
+          <div class="coool">
+            <h2>Возможности дальнейшей карьеры</h2>
+            <p>Откройте новые карьерные возможности.</p>
+          </div>
         </div>
       </div>
     </div>
 
-    <h1>Предлагаемые курсы</h1>
+    <h1 class="h">Предлагаемые курсы</h1>
     <ul class="list-group" id="list-courses"></ul>
 
     <nav aria-label="Page navigation example">
       <ul class="pagination">
-        <!-- <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li> -->
         <div id="pages" style="display: flex;"></div>
-        <!-- <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li> -->
       </ul>
     </nav>
 
     <div id="opted-course">
-      <h3>Информация о курсе:</h3>
+      <h3 class="h">Информация о курсе:</h3>
       <ul class="list-group" id="course-info"></ul>
       <button class="make-order" id="make-order-but">Подать заявку</button>
     </div>
 
-    <h1>Поиск курсов</h1>
-    <p style="font-size: 1.5rem;">Введите название курса или уровень</p>
+    <h1 class="h">Поиск курсов</h1>
+    <p id="p">Введите название курса или уровень</p>
     <div class="course-search">
       <input type="text" name="course" id="course" placeholder="Введите название курса">
       <p>или</p>
@@ -165,28 +162,22 @@
     <button class="search-but" id="search-course">Поиск</button>
 
     <div id="searched-course">
-      <h3>Найденные курсы:</h3>
+      <h3 class="h">Найденные курсы:</h3>
       <ul class="list-group" id="search-course-info"></ul>
     </div>
-    
-    <!-- <div id="searched-tutor">
-      <h3>Доступные репетиторы для этого уровня</h3>
-      <ul class="list-group" id="search-tutor-info"></ul>
-      <button class="make-order">Оформить заявку</button>
-    </div> -->
-    
 
-    <h1>Поиск репетитора</h1>
+    <h1 class="h">Поиск репетитора</h1>
     <div class="tutor-search">
-      <select name="qualific" id="qualific">
-        <option value="all">Все квалификации</option>
-        <option value="intermed">Еще чет</option>
-        <option value="advanced">И еще</option>
+      <select name="lang-level" id="lang-level">
+        <option value="">--Уровень языка--</option>
       </select>
-      <input type="text" name="exprerience" id="exprerience" placeholder="Опыт работы (в годах)">
-      <button class="search-but">Поиск</button>
+      <select name="experience" id="experience" disabled>
+        <option value="">--Опыт работы--</option>
+      </select>
+      <button class="search-but" id="search-tutor">Поиск</button>
     </div>
 
+    <ul class="list-group" id="tutor-info"></ul>
   </main>
   <footer id="contacts">
     Наши контакты: info@learnrussian.com

@@ -340,10 +340,9 @@ document.getElementById('cancel-but').addEventListener('click', () => {
   totalCostP.innerHTML = "Общая стоимость: ";
 })
 
-
 const searchCourse = document.getElementById('search-course');
 searchCourse.addEventListener('click', () => {
-  let courseName = document.getElementById('course').value;
+  const courseName = document.getElementById('course').value;
   document.getElementById('course').value = '';
   const searchLevel = document.getElementById('level').value;
   document.getElementById('level').value = ''; 
@@ -360,15 +359,6 @@ searchCourse.addEventListener('click', () => {
         '<br> Уровень: ' + course.level + '<br> Преподаватель: ' + course.teacher;
         parentCourse.appendChild(courseInfo);
       }
-      // for (const tutor of tutors) {
-      //   if (course.level == tutor.language_level) {
-      //     const tutorInfo = document.createElement('li');
-      //     tutorInfo.classList.add('list-group-item');
-      //     searchedTutor.style.display = 'block';
-      //     tutorInfo.innerHTML = 'Имя: ' + tutor.name + ', Опыт работы: ' + tutor.work_experience;
-      //     parentTutor.appendChild(tutorInfo);
-      //   }
-      // }
     } else {
       if (course.level == searchLevel) {
         const courseInfo = document.createElement('li');
@@ -377,15 +367,50 @@ searchCourse.addEventListener('click', () => {
         courseInfo.innerHTML = 'Название: ' + course.name;
         parentCourse.appendChild(courseInfo);
       }
-      // for (const tutor of tutors) {
-      //   if (searchLevel == tutor.language_level) {
-      //     const tutorInfo = document.createElement('li');
-      //     tutorInfo.classList.add('list-group-item');
-      //     searchedTutor.style.display = 'block';
-      //     tutorInfo.innerHTML = 'Имя: ' + tutor.name + ', Опыт работы: ' + tutor.work_experience;
-      //     parentTutor.appendChild(tutorInfo);
-      //   }
-      // } 
     }
   }
 })
+
+const levels = [];
+for (const tutor of tutors) {
+  levels.push(tutor.language_level);
+}
+const correctLevels = new Set(levels);
+const levelParent = document.getElementById('lang-level');
+for (const correctLevel of correctLevels) {
+  const levelOption = document.createElement('option');
+  levelOption.innerHTML = correctLevel;
+  levelOption.value = correctLevel;
+  levelParent.appendChild(levelOption);
+}
+
+const expParent = document.getElementById('experience');
+const tutorParent = document.getElementById('tutor-info');
+levelParent.addEventListener('change', () => {
+  expParent.replaceChildren();
+  expParent.disabled = false;
+  const level = levelParent.value;
+  const experience = tutors.filter(el => el.language_level == level);
+  for (const exp of experience) {
+    const expOption = document.createElement('option');
+    expOption.innerHTML = exp.work_experience;
+    expOption.value = exp.work_experience;
+    expParent.appendChild(expOption);
+  } 
+  document.getElementById('search-tutor').addEventListener('click', () => {
+    for (const tutor of tutors) {
+      if (tutor.work_experience == expParent.value && tutor.language_level == level){
+        const li = document.createElement('li');
+        li.classList.add('list-group-item');
+        li.innerHTML = 'Имя: ' + tutor.name + '<br>Уровень языка: ' + tutor.language_level +
+        '<br> Языки, на которых говорит репетитор: ' + tutor.languages_spoken + '<br> Опыт: ' + tutor.work_experience + ' лет' +
+        '<br> Почасовая ставка: ' + tutor.price_per_hour + ' руб./час';
+        tutorParent.appendChild(li);
+      }
+    }
+  })
+})
+
+
+
+
