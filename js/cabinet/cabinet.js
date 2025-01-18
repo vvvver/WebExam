@@ -113,9 +113,7 @@ const modals = (seeBut, editBut, delBut) => {
     optedOptionTime.innerHTML = order.time_start.slice(0, 5);
     optedOptionTime.value = order.time_start.slice(0, 5);
     selectTimeParent.appendChild(optedOptionTime);
-
     
-    // selectTimeParent.replaceChildren();
     //добавление остальных дат
     for (const course of courses) {
       if (course.id == order.course_id) {
@@ -241,7 +239,7 @@ const modals = (seeBut, editBut, delBut) => {
       console.log(ans);
       
       orders = await getOrders();
-      // pages();
+      pages();
       changePage(Number(sessionStorage.getItem('pagenum')));
       notif.innerHTML = 'Заказ успешно удален';
       notif.style.display = 'block';
@@ -372,7 +370,8 @@ const changePage = (pageNum) => {
     courseParent.appendChild(orderName);
   
     const orderDate = document.createElement('td');
-    orderDate.innerHTML = order.date_start;
+    const date = new Date(order.date_start);
+    orderDate.innerHTML = `${String(date.getDate()).padStart(2, '0')}.${String(date.getMonth()+ 1).padStart(2, '0')}.${date.getFullYear()}`;
     courseParent.appendChild(orderDate);
   
     const orderPrice = document.createElement('td');
@@ -419,6 +418,8 @@ const changePage = (pageNum) => {
 changePage(1);
 
 const pages = () => {
+  const parent = document.getElementById('pages');
+  parent.replaceChildren();
   for (let i = 1; i <= Math.ceil(orders.length/4); i++) {
     const li = document.createElement('li');
     li.classList.add('page-item');
@@ -434,7 +435,6 @@ const pages = () => {
       sessionStorage.setItem('pagenum', pageNum);
       changePage(pageNum);    
     })
-    const parent = document.getElementById('pages');
     parent.appendChild(li);
   }
 }
